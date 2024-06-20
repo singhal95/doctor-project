@@ -29,7 +29,7 @@ const Register = () => {
     }, [countdown]);
 
     const requestOtp = async (e) => {
-        axios.post("http://localhost:8000/sendotp", { email: registrationData.email })
+        axios.post("https://backenddoctors.onrender.com/sendotp", { email: registrationData.email })
             .then((response) => {
                 setOtpFlag(true);
                 setCountdown(60); // 1 minute countdown
@@ -48,7 +48,7 @@ const Register = () => {
     };
 
     const submitData = async (e) => {
-        axios.post("http://localhost:8000/register", registrationData)
+        axios.post("https://backenddoctors.onrender.com/register", registrationData)
             .then((response) => {
                 navigate('/login');
             })
@@ -81,7 +81,7 @@ const Register = () => {
                             <option value="" disabled selected>Select your role</option>
                             <option value="doctor">doctor</option>
                             <option value="patient">patient</option>
-                            <option value="others">others</option>
+                            <option value="others">admin</option>
                         </select>
                         <div className="registerwrap">
                             <button className='registerbutton' type="submit" onClick={requestOtp}> Register </button>

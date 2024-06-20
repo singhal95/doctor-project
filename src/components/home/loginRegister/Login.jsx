@@ -29,7 +29,7 @@ const Login = () => {
       return;
     }
     setOtpFlag(true);
-    axios.post("http://localhost:8000/sendotp", { email: registrationData.email })
+    axios.post("https://backenddoctors.onrender.com/sendotp", { email: registrationData.email })
       .then((response) => {
         setOtpFlag(true);
         setCountdown(60); // 1 minute countdown
@@ -52,7 +52,7 @@ const Login = () => {
       alert('Email and password are required');
       return;
     }
-    axios.post("http://localhost:8000/login", registrationData).
+    axios.post("https://backenddoctors.onrender.com/login", registrationData).
       then(response => {
         localStorage.setItem("authToken", response.data.authToken);
         localStorage.setItem("userid", response.data.userData._id);
@@ -81,7 +81,7 @@ const Login = () => {
       alert('Email is required');
       return;
     }
-    axios.post("http://localhost:8000/verifyOtp", registrationData)
+    axios.post("https://backenddoctors.onrender.com/verifyOtp", registrationData)
       .then((response) => {
         if (response.data.userData.role === "admin") {
           navigate(`/admin/news`);
